@@ -8,7 +8,12 @@ export const TodoItem = ({ item, id, completed }) => {
     return (
         <div className="todo-item" data-testid="todo-item">
             <h3>{item}</h3>
-            <button onClick={() => handleOnClickCompleted(id)} className="complete-btn" data-testid="complete-btn" >{!completed ? "done" : "undo"}</button>
+            <button onClick={() => handleOnClickCompleted(id)}
+                className="complete-btn"
+                data-testid="complete-btn"
+            >
+                {!completed ? "done" : "undo"}
+            </button>
         </div>
     )
 }

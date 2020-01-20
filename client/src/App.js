@@ -14,7 +14,7 @@ function App() {
 
   const handleOnClickCompleted = id => {
     console.log('handleOnClickCompleted', id)
-    dispatch({ type: "TOGGLE_COMPLETE", payload: id })
+    dispatch({ type: "TOGGLE_COMPLETED", payload: { id } })
   }
 
   console.log('AppState', state)
