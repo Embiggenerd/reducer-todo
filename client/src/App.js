@@ -21,12 +21,17 @@ function App() {
     dispatch({ type: 'CLEAR_COMPLETED', payload: {} })
   }
 
+  const handleDeleteTodo = id => {
+    dispatch({ type: 'DELETE_TODO', payload: { id } })
+  }
+
   console.log('AppState', state)
   return (
     <TodoContext.Provider value={{
       state,
       handleSubmitTodo,
       handleOnClickCompleted,
+      handleDeleteTodo,
     }} >
       <div className="App">
         <header className="App-header">

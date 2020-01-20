@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { TodoContext } from '../contexts'
 
 export const TodoItem = ({ item, id, completed }) => {
-    const { handleOnClickCompleted } = useContext(TodoContext)
+    const { handleOnClickCompleted, handleDeleteTodo } = useContext(TodoContext)
 
 
     return (
@@ -14,6 +14,7 @@ export const TodoItem = ({ item, id, completed }) => {
             >
                 {!completed ? "done" : "undo"}
             </button>
+            <button onClick={()=>handleDeleteTodo(id)}>Delete</button>
         </div>
     )
 }
