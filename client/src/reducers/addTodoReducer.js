@@ -1,4 +1,3 @@
-
 export const addTodoReducer = (state, payload) => {
     let stateCopy = [...state] // Copy state to keep things pure
     let index = -1
