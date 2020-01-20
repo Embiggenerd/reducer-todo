@@ -7,12 +7,19 @@ import { TodoContext } from './contexts'
 
 function App() {
   const [state, dispatch] = useReducer(reducerTodo, initialStateTodo)
+
   const handleSubmitTodo = (todo) => {
     dispatch({ type: "ADD_TODO", payload: { item: todo, id: Date.now(), completed: false } })
   }
+
+  const handleOnClickCompleted = id => {
+    console.log('handleOnClickCompleted', id)
+    dispatch({ type: "TOGGLE_COMPLETE", payload: id })
+  }
+
   console.log('AppState', state)
   return (
-    <TodoContext.Provider value={{ state, handleSubmitTodo }} >
+    <TodoContext.Provider value={{ state, handleSubmitTodo, handleOnClickCompleted }} >
       <div className="App">
         <header className="App-header">
           <TodoForm />

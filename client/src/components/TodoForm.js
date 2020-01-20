@@ -14,6 +14,7 @@ export const TodoForm = () => {
     const handleOnSubmit = (event) => {
         event.preventDefault()
         handleSubmitTodo(todo)
+        setTodo("")
     }
 
     return (
