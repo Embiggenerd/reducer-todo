@@ -4,8 +4,10 @@ export const initialStateTodo = [{
     id: 3892987589
 }]
 
-export const reducerTodo = (state, action) => {
-    switch (action.type) {
+export const reducerTodo = (state, {type, payload}) => {
+    switch (type) {
+        case "ADD_TODO":
+            return [...state, payload]
         default:
             return state
     }
