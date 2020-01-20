@@ -9,7 +9,7 @@ function App() {
   const [state, dispatch] = useReducer(reducerTodo, initialStateTodo)
 
   const handleSubmitTodo = (todo) => {
-    dispatch({ type: "ADD_TODO", payload: { item: todo, id: Date.now(), completed: false } })
+    dispatch({ type: "ADD_TODO", payload: { item: todo, id: Date.now(), completed: false, notes:"" } })
   }
 
   const handleOnClickCompleted = id => {
@@ -25,6 +25,11 @@ function App() {
     dispatch({ type: 'DELETE_TODO', payload: { id } })
   }
 
+  const handleAddNote = (id, note) => {
+    const newNote = '* ' + note + ' \n'
+    dispatch({ type: "ADD_NOTE", payload: { id, note: newNote } })
+  }
+
   console.log('AppState', state)
   return (
     <TodoContext.Provider value={{
@@ -32,6 +37,7 @@ function App() {
       handleSubmitTodo,
       handleOnClickCompleted,
       handleDeleteTodo,
+      handleAddNote,
     }} >
       <div className="App">
         <header className="App-header">

@@ -1,14 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
+import { NoteForm } from './index'
 import { TodoContext } from '../contexts'
 
-export const TodoItem = ({ item, id, completed }) => {
-    const { handleOnClickCompleted, handleDeleteTodo } = useContext(TodoContext)
+export const TodoItem = ({ item, id, completed, notes }) => {
+    const { handleOnClickCompleted, handleDeleteTodo, handleAddNote } = useContext(TodoContext)
+    const [showNote, setShowNote] = useState(false)
 
+    const handleOnClickTodo = () => {
+        setShowNote(!showNote)
+    }
 
     return (
         <div className="todo-item" data-testid="todo-item">
-            <h3 className={!completed ? "" : "complete"}>{item}</h3>
+            <h3 onClick={handleOnClickTodo} className={!completed ? "" : "complete"}>{item}</h3>
+            {showNote ? <NoteForm id={id} notes={notes} /> : null}
 
             <button onClick={() => handleOnClickCompleted(id)}
                 className="complete-btn"
@@ -17,7 +23,7 @@ export const TodoItem = ({ item, id, completed }) => {
                 {!completed ? "done" : "undo"}
             </button>
 
-            <button onClick={()=>handleDeleteTodo(id)}>Delete</button>
+            <button onClick={() => handleDeleteTodo(id)}>Delete</button>
         </div>
     )
 }
