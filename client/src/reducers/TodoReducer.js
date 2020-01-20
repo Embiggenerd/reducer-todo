@@ -13,7 +13,7 @@ export const reducerTodo = (state, { type, payload }) => {
         case "TOGGLE_COMPLETED":
             const stateCopy = [...state] // Copy state to keep things pure
             let index = -1
-            
+
             for (let i = 0; i < stateCopy.length; i++) {
                 if (stateCopy[i].id == payload.id) { 
                     index = i
@@ -27,7 +27,8 @@ export const reducerTodo = (state, { type, payload }) => {
             } else {
                 console.log(`index not found for id ${payload.id} in state`, stateCopy)
             }
-
+        case "CLEAR_COMPLETED":
+            return state.filter(todo => !todo.completed)
         default:
             return state
     }

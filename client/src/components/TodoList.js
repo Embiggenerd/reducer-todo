@@ -7,7 +7,7 @@ export const TodoList = () => {
     console.log('TodoListState', state)
     return (
         <div className="todo-list" data-testid="todo-list">
-           {state.map( (todo)=><TodoItem {...todo} >TodoList</TodoItem>)}
+           {state.map( (todo)=><TodoItem key={todo.id} {...todo} >TodoList</TodoItem>)}
         </div >
     )
 }

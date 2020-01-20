@@ -17,12 +17,21 @@ function App() {
     dispatch({ type: "TOGGLE_COMPLETED", payload: { id } })
   }
 
+  const handleClearCompleted = () => {
+    dispatch({ type: 'CLEAR_COMPLETED', payload: {} })
+  }
+
   console.log('AppState', state)
   return (
-    <TodoContext.Provider value={{ state, handleSubmitTodo, handleOnClickCompleted }} >
+    <TodoContext.Provider value={{
+      state,
+      handleSubmitTodo,
+      handleOnClickCompleted,
+    }} >
       <div className="App">
         <header className="App-header">
           <TodoForm />
+          <button onClick={handleClearCompleted}>Clear Completed</button>
           <TodoList />
         </header>
       </div>
